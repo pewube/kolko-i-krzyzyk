@@ -12,10 +12,6 @@ body {
   margin: 20px auto;
 }
 
-.game__title {
-  margin-bottom: 30px;
-}
-
 .board-row {
   display: flex;
   justify-content: center;
@@ -41,6 +37,10 @@ body {
   cursor: pointer;
 }
 
+.game__title {
+  margin-bottom: 30px;
+}
+
 .game {
   display: flex;
   flex-direction: column;
@@ -51,14 +51,20 @@ body {
 .game-info {
   text-align: center;
   margin-top: 20px;
-  &__title {
+  &__status {
     padding-bottom: 10px;
     font-weight: bold;
     font-size: 18px;
   }
+  &__title {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 16px;
+  }
 
   &__btnSort {
-    padding: 10px;
+    padding: 0 10px 20px 10px;
     border: 0;
     background-color: #fff;
     text-transform: uppercase;

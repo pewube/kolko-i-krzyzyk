@@ -150,11 +150,13 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div style={this.winningSquares.length ? {color:"red"}:{color:"black"}}className="game-info__title">{status}</div>
-          <button className="game-info__btnSort" onClick={this.sortList.bind(this)}>
-            Sortuj listę
-          </button>
-          <ul className="game-info__list">{!this.state.sortDescending ? moves : moves.reverse()}</ul>
+          <h2 style={this.winningSquares.length ? {color:"red"}:{color:"black"}}className="game-info__status">{status}</h2>
+          <h3 className="game-info__title">Historia posunięć</h3>
+          {this.state.lastClickedIndex.length>1 ? <><button className="game-info__btnSort" onClick={this.sortList.bind(this)}>
+            {this.state.sortDescending ? `↓↑` : `↓↑`}
+          </button><ul className="game-info__list">{!this.state.sortDescending ? moves : moves.reverse()}</ul></> : null }
+
+
         </div>
       </div>
     );
