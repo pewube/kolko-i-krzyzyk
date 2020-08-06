@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Kółko i krzyżyk",
+  "name": "Gra w kółko i krzyżyk",
   "icons": [
     {
       "src": "favicon.ico",
