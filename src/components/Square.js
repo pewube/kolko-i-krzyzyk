@@ -7,7 +7,8 @@ const Square = (props) => (
         ? { color: "red" }
         : { color: "black" }
     }
-    className="square"
+    className="game__board__square"
+    aria-label={`board button no ${props.index+1}`}
     onClick={props.onClick}>
     {props.value}
   </button>

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.scss";
+import "./scss/index.scss";
 import * as serviceWorker from "./serviceWorker";
 
 import Board from "./components/Board";
@@ -63,7 +63,7 @@ class Game extends React.Component {
     } else {
       column = "C";
     }
-    return `komórka: ${column + row}`;
+    return `  (${column + row})`;
   }
 
   sortList() {
@@ -113,19 +113,24 @@ class Game extends React.Component {
     const winner = this.calculateWinner(current.squares);
     const moves = history.map((step, move) => {
       const desc = move
-        ? `Przejdź do ruchu #${move} - ${this.showCoordinates(move)}`
+        ? `Przejdź do ruchu #${move}${this.showCoordinates(move)}`
         : `Przejdź na początek gry`;
 
       return (
         <li key={move}>
           {this.state.stepNumber === move ? (
-            <button className="game-info__list-item"
+            <button
+              className="game__info__list-item"
               style={{ fontWeight: "bold" }}
               onClick={() => this.jumpTo(move)}>
               {desc}
             </button>
           ) : (
-            <button className="game-info__list-item" onClick={() => this.jumpTo(move)}>{desc}</button>
+            <button
+              className="game__info__list-item"
+              onClick={() => this.jumpTo(move)}>
+              {desc}
+            </button>
           )}
         </li>
       );
@@ -142,22 +147,37 @@ class Game extends React.Component {
     return (
       <div className="game">
         <h1 className="game__title">Kółko i krzyżyk</h1>
-        <div className="game-board">
+        <section className="game__panel">
+        <div className="game__board">
           <Board
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
             victory={this.winningSquares}
           />
         </div>
-        <div className="game-info">
-          <h2 style={this.winningSquares.length ? {color:"red"}:{color:"black"}}className="game-info__status">{status}</h2>
-          <h3 className="game-info__title">Historia posunięć</h3>
-          {this.state.lastClickedIndex.length>1 ? <><button className="game-info__btnSort" onClick={this.sortList.bind(this)}>
-            {this.state.sortDescending ? `↓↑` : `↓↑`}
-          </button><ul className="game-info__list">{!this.state.sortDescending ? moves : moves.reverse()}</ul></> : null }
-
-
-        </div>
+        <h2
+            style={
+              this.winningSquares.length ? { color: "red" } : { color: "black" }
+            }
+            className="game__status">
+            {status}
+          </h2>
+        </section>
+        <section className="game__info">
+          <h3 className="game__info__title">Historia posunięć</h3>
+          {this.state.lastClickedIndex.length > 1 ? (
+            <>
+              <button
+                className="game__info__btnSort"
+                onClick={this.sortList.bind(this)}>
+                {this.state.sortDescending ? `↓↑` : `↓↑`}
+              </button>
+              <ul className="game__info__list">
+                {!this.state.sortDescending ? moves : moves.reverse()}
+              </ul>
+            </>
+          ) : null}
+          </section>
       </div>
     );
   }
@@ -170,4 +190,4 @@ ReactDOM.render(<Game />, document.getElementById("root"));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();

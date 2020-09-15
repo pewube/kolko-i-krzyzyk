@@ -1,0 +1,23 @@
+html {
+  font-family: "Kalam", cursive;
+  font-size: 20px;
+}
+
+@media (min-width: 768px) and (min-height: 768px) {
+  html {
+    font-size: 26px;
+  }
+}
+
+.game__title,
+.game__status,
+.game__board__square {
+  font-family: "Mali", cursive;
+  background-color: $blanched-almond;
+}
+
+.game__info__title,
+.game__info__btnSort,
+.game__info__list-item {
+  font-family: "BenchNine", sans-serif;
+}

@@ -1,0 +1,169 @@
+@import "reset";
+@import "base";
+@import "variables";
+@import "typography";
+
+body {
+  margin: 10px auto;
+  max-width: 768px;
+  background-color: $blanched-almond;
+  color: $rich-black-fogra-29;
+}
+
+@media (min-height: 411px) {
+  body {
+    margin: 20px auto;
+  }
+}
+
+.game {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  &__title {
+    width: 100%;
+    padding-bottom: $padding-panel;
+    color: $kobe;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  &__panel {
+    width: $board-size;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  &__board {
+    display: flex;
+    flex-wrap: wrap;
+
+    height: $board-size;
+
+    &__square {
+      flex-grow: 1;
+
+      width: #{$board-size/3};
+      height: #{$board-size/3};
+      padding: 0;
+      margin-right: -1px;
+      margin-top: -1px;
+      border: 1px solid $kobe;
+
+      font-size: 2rem;
+      font-weight: bold;
+      line-height: #{$board-size/3};
+      text-align: center;
+
+      cursor: pointer;
+    }
+
+    &__row {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__status {
+    width: 100%;
+    padding-top: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  &__info {
+    width: $board-size;
+    margin: 0 10px;
+    text-align: center;
+
+    &__title {
+      font-weight: bold;
+      color: $ming;
+      font-size: 1.1rem;
+    }
+
+    &__btnSort {
+      border: 0;
+      background-color: $blanched-almond;
+      text-transform: uppercase;
+      color: $ming;
+      font-size: 0.9rem;
+      line-height: 200%;
+
+      cursor: pointer;
+    }
+
+    &__list {
+      color: red;
+      list-style: none;
+    }
+
+    &__list-item {
+      padding: 0;
+      border: none;
+      background-color: $blanched-almond;
+      color: $ming;
+      font-size: 0.8rem;
+      line-height: 270%;
+
+      cursor: pointer;
+    }
+  }
+}
+
+@media (min-height: 360px) {
+  .game {
+    &__title {
+      padding-bottom: $padding-panel-360vh;
+    }
+
+    &__status {
+      padding-top: $padding-panel-360vh;
+    }
+  }
+}
+
+@media (min-height: 411px) {
+  .game {
+    &__title {
+      padding-bottom: $padding-panel-411vh;
+    }
+
+    &__status {
+      padding-top: $padding-panel-411vh;
+    }
+  }
+}
+
+@media (min-width: 768px) and (min-height: 768px) {
+  .game {
+    &__title {
+      padding-bottom: $padding-panel-768vh;
+    }
+
+    &__panel {
+      width: $board-size-768vw;
+    }
+
+    &__board {
+      height: $board-size-768vw;
+
+      &__square {
+        width: #{$board-size-768vw/3};
+        height: #{$board-size-768vw/3};
+
+        font-size: 2.6rem;
+        line-height: #{$board-size-768vw/3};
+      }
+    }
+
+    &__status {
+      padding-top: $padding-panel-768vh;
+    }
+
+    &__info {
+      width: $board-size-768vw;
+    }
+  }
+}
